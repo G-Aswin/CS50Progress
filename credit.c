@@ -8,7 +8,7 @@ int no_len(long c_no);
 int main(void)
 {
     long c_no = get_long("Number : ");
-    if(checksum(c_no)==1)
+    if(checksum(c_no)==1 && (no_len(c_no)==13 || no_len(c_no)==15 || no_len(c_no)==16))
     {
        // printf("Entered! %i\n", no_len(c_no));
         if(no_len(c_no) == 15)
