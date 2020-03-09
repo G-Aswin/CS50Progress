@@ -15,6 +15,8 @@ int main(void)
         {
             if(c_no/10000000000000 == 34 || c_no/10000000000000 == 37)
                 printf("AMEX\n");
+            else
+                printf("INVALID\n");
         }
         else if(no_len(c_no) == 16)
         {
@@ -22,11 +24,15 @@ int main(void)
                 printf("MASTERCARD\n");
             else if(c_no/1000000000000000 == 4)
                 printf("VISA\n");
+            else
+                printf("INVALID\n");
         }
         else if(no_len(c_no) == 13)
         {
             if(c_no / 1000000000000 == 4)
                 printf("VISA\n");
+            else
+                printf("INVALID\n");
         }
         else
         {
