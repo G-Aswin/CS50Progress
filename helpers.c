@@ -9,7 +9,7 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             float average = (image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed)/3;
-            if (average % 1 <= 0.5)
+        /*   if (average % 1 <= 0.5)
             {
                 average -= average % 1;
             }
@@ -17,7 +17,8 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
             {
                 average += (1 - average % 1);
             }
-            average = (int)(average);
+            average = (int)(average); */
+            average = roundf(average);
             image[i][j].rgbtBlue = image[i][j].rgbtGreen = image[i][j].rgbtRed = average;
         }
     }
