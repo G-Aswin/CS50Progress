@@ -65,5 +65,34 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            RGBTRIPLE sumbox = {0, 0, 0};
+            int sumcount = 0;
+            //put in values for all the limits
+            int negrow = (i == 0) ? (0) : (i - 1);
+            int posrow = (i == height - 1) ? (height - 1) : (i + 1);
+            int negcol = (j == 0) ? (0) : (j - 1);
+            int poscol = (j == width - 1) ? (width - 1) : (j + 1);
+            for (int p = negrow; p <= posrow; p++)
+            {
+                for (int q = negcol; q <= poscol; q++)
+                {
+                    sumbox.rgbtRed += image[p][q].rgbtRed;
+                    sumbox.rgbtGreen += image[p][q].rgbtGreen;
+                    sumbox.rgbtBlue += image[p][q].rgbtBlue;
+                    sumcount++;
+                }
+            }
+            float redavg = roundf(sumbox.rgbtRed / (float)sumcount);
+            float greenavg = roundf(sumbox.rgbtGreen / (float)sumcount);
+            float blueavg = roundf(sumbox.rgbtBlue / (float)sumcount);
+            image[i][j].rgbtRed = redavg;
+            image[i][j].rgbtGreen = greenavg;
+            image[i][j].rgbtBlue = blueavg;
+        }
+    }
     return;
 }
