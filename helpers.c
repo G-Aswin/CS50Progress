@@ -69,7 +69,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            RGBTRIPLE sumbox = {0, 0, 0};
+            int sumboxrgbtRed = 0, sumboxrgbtGreen = 0, sumboxrgbtBlue = 0;
             int sumcount = 0;
             //put in values for all the limits
             int negrow = (i == 0) ? (0) : (i - 1);
@@ -80,15 +80,15 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int q = negcol; q <= poscol; q++)
                 {
-                    sumbox.rgbtRed += image[p][q].rgbtRed;
-                    sumbox.rgbtGreen += image[p][q].rgbtGreen;
-                    sumbox.rgbtBlue += image[p][q].rgbtBlue;
+                    sumboxrgbtRed += image[p][q].rgbtRed;
+                    sumboxrgbtGreen += image[p][q].rgbtGreen;
+                    sumboxrgbtBlue += image[p][q].rgbtBlue;
                     sumcount++;
                 }
             }
-            float redavg = roundf(sumbox.rgbtRed / (float)sumcount);
-            float greenavg = roundf(sumbox.rgbtGreen / (float)sumcount);
-            float blueavg = roundf(sumbox.rgbtBlue / (float)sumcount);
+            float redavg = roundf(sumboxrgbtRed / (float)sumcount);
+            float greenavg = roundf(sumboxrgbtGreen / (float)sumcount);
+            float blueavg = roundf(sumboxrgbtBlue / (float)sumcount);
             image[i][j].rgbtRed = redavg;
             image[i][j].rgbtGreen = greenavg;
             image[i][j].rgbtBlue = blueavg;
