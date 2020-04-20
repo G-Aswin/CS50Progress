@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <strings.h>
 #include <string.h>
+#include <ctype.h>
 #include <stdio.h>
 
 #include "dictionary.h"
@@ -31,8 +32,15 @@ node *table[N];
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
-    unsigned int index = hash(word);
-    if (strcasecmp(table[index]->word, word) == 0)
+    char checkword[strlen(word)];
+
+    for (int i = 0, n = strlen(word); i < n; i++)
+    {
+        checkword[i] = tolower(word[i]);
+    }
+
+    unsigned int index = hash(checkword);
+    if (strcasecmp(table[index]->word, checkword) == 0)
     {
         return true;
     }
@@ -76,7 +84,7 @@ unsigned int hash(const char *word)
     {
         sum += (int)word[i];
     }
-    
+
     return sum % N;*/
 }
 
