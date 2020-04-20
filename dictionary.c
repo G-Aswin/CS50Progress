@@ -33,13 +33,24 @@ node *table[N];
 bool check(const char *word)
 {
     char checkword[strlen(word)];
+    
+    strcpy(checkword, word);
 
-    for (int i = 0, n = strlen(word); i < n; i++)
+    int i = 0;
+    while(checkword[i] != '\0')
     {
-        checkword[i] = tolower(word[i]);
+        if (isupper(checkword[i]) != 0)
+        {
+            checkword[i] = tolower(checkword[i]);
+        }
+        i++;
     }
-
+    
+    //printf("\n\n%s\n\n", checkword);
+    
     unsigned int index = hash(checkword);
+
+    
     if (strcasecmp(table[index]->word, checkword) == 0)
     {
         return true;
@@ -78,14 +89,7 @@ unsigned int hash(const char *word)
         hcode = ((hcode << 5) + hcode) + c; //"hcode * 33 + c"
     }
 
-    return hcode % N;/*
-    unsigned int sum = 0;
-    for (int i = 0, n = strlen(word); i < n; i++)
-    {
-        sum += (int)word[i];
-    }
-
-    return sum % N;*/
+    return hcode % N;
 }
 
 
