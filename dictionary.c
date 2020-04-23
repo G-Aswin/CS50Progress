@@ -33,7 +33,7 @@ node *table[N];
 bool check(const char *word)
 {
     char checkword[strlen(word)];
-    
+
     strcpy(checkword, word);
 
     int i = 0;
@@ -45,12 +45,10 @@ bool check(const char *word)
         }
         i++;
     }
-    
-    //printf("\n\n%s\n\n", checkword);
-    
+
     unsigned int index = hash(checkword);
 
-    
+
     if (strcasecmp(table[index]->word, checkword) == 0)
     {
         return true;
