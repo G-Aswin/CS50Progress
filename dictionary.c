@@ -107,6 +107,12 @@ bool load(const char *dictionary)
         return false;
     }
 
+    //Initializes the hash table
+    for (int i = 0; i < N; i++)
+    {
+        table[i] = NULL;
+    }
+
     //array to store a word read from the dictionary
     char currword[LENGTH+1];
     //to read all the words in the dictionary
