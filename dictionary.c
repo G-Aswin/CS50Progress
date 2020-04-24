@@ -78,15 +78,15 @@ unsigned int hash(const char *word)
 {
     //djb2 hash function from "http://www.cse.yorku.ca/~oz/hash.html"
     unsigned int hcode = 5381;
-    char *hashword = malloc(45);
-    strcpy(hashword, word);
+    //char *hashword = malloc(45);
+    //strcpy(hashword, word);
     int c;
 
-    while ((c = *hashword++))
+    while ((c = *word++))
     {
         hcode = ((hcode << 5) + hcode) + c; //"hcode * 33 + c"
     }
-
+    //free(hashword);
     return hcode % N;
 }
 
@@ -108,8 +108,7 @@ bool load(const char *dictionary)
     }
 
     //array to store a word read from the dictionary
-    char *currword = malloc(LENGTH * sizeof(char) + 1);
-
+    char currword[LENGTH+1];
     //to read all the words in the dictionary
     while (fscanf(file, "%s", currword) != EOF)
     {
