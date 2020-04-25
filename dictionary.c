@@ -18,7 +18,7 @@ typedef struct node
 node;
 
 // Number of buckets in hash table
-const unsigned int N = 5000;
+const unsigned int N = 5381;
 
 // Counts the total number of words loaded
 unsigned long int countword = 0;
@@ -37,7 +37,7 @@ bool check(const char *word)
     strcpy(checkword, word);
 
     int i = 0;
-    while(checkword[i] != '\0')
+    while (checkword[i] != '\0')
     {
         if (isupper(checkword[i]) != 0)
         {
@@ -118,7 +118,7 @@ bool load(const char *dictionary)
     }
 
     //array to store a word read from the dictionary
-    char currword[LENGTH+1];
+    char currword[LENGTH + 1];
     //to read all the words in the dictionary
     while (fscanf(file, "%s", currword) != EOF)
     {
