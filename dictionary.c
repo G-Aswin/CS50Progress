@@ -107,7 +107,7 @@ bool load(const char *dictionary)
         return false;
     }
 
-    //Initializes the hash table
+    //Initializes the Hash Table
     for (int i = 0; i < N; i++)
     {
         table[i] = NULL;
