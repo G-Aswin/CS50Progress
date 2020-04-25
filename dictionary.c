@@ -48,6 +48,10 @@ bool check(const char *word)
 
     unsigned int index = hash(checkword);
 
+    if (table[index] == NULL)
+    {
+        return false;
+    }
 
     if (strcasecmp(table[index]->word, checkword) == 0)
     {
