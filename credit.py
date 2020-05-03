@@ -13,6 +13,7 @@ def main():
     # Check for Validity of the Credit Card Number
     validity = checksum(number)
     if validity == False:
+        print("INVALID")
         exit(0)
 
     # Check for AMEX
