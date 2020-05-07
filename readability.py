@@ -14,7 +14,6 @@ def main():
     L = (L * 100.0) / W
     S = (S * 100.0) / W
 
-
     # Calculate the Coleman-Liau Value according to input text
     index = round(0.0588 * L - 0.296 * S - 15.8)
 
@@ -24,7 +23,6 @@ def main():
         print("Before Grade 1")
     else:
         print(f"Grade {index}")
-
 
 
 # Function to count the number of letters in the text
